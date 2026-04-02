@@ -1,5 +1,0 @@
-
-> skyhealth@0.1.0 dev
-> next dev --turbopack
-
-Terminate batch job (Y/N)? Terminate batch job (Y/N)? [?25h
