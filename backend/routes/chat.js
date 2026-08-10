@@ -39,6 +39,10 @@ router.post("/", auth, async (req, res) => {
     } catch (apiError) {
       console.warn("Gemini API failed, generating fallback response:", apiError.message);
       
+      if (apiError.message && (apiError.message.includes("429") || apiError.message.toLowerCase().includes("quota"))) {
+        return res.json({ message: "I'm receiving too many requests right now. Please wait a few seconds and try asking again!" });
+      }
+
       const lastUserMsg = messages[messages.length - 1]?.content || "";
       const query = lastUserMsg.toLowerCase();
       
